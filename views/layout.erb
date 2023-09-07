@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <link rel="shortcut icon" href="#">
+    <title>Pubs: Ratings for Pickup Basketball</title>
+    <meta charset="UTF-8">
+  </head>
+
+  <body>
+
+    <% if session[:success] %>
+      <%= session.delete(:success) %>
+    <% elsif session[:error] %>
+      <%= session.delete(:error) %>
+    <% end %>
+
+    <main>
+      <%== yield %>
+    </main>
+
+  </body>
+</html>
+

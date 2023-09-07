@@ -1,0 +1,26 @@
+<h1>Play Game</h1>
+
+<br><br>
+
+
+
+<form action="/play" method="post">
+  <label for="team1">team 1</label>
+  <input type="text" name="team1" placeholder="" value="<%= @pregame_teams[:team1_name] %>">
+  <br>
+
+  <label for="team2">team 2</label>
+  <input type="text" name="team2" placeholder="" value="<%= @pregame_teams[:team2_name] %>"><br>
+
+  <input type="submit" value="Play!">
+</form>
+
+<br>
+
+<a href="/teams" target="_blank">list of teams</a>
+
+<br><br>
+
+<a href="/home">return</a>
+
+

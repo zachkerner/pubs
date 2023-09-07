@@ -1,0 +1,44 @@
+<h1>And the winner is...</h1>
+
+
+<br>
+
+
+<h2><%= @winning_name  %></h2>
+
+<br>
+
+<p><%= @winning_name %>'s mmr is now <%= @winning_mmr %>.</p>
+<br>
+
+<% @winning_players.each do |player| %>
+  <% player_name = player[:name] %>
+  <% new_mmr = player[:mmr] %>
+  <p>
+      <%= player_name %> <b>gained</b> <%= @mmr_gain %> mmr!
+      Their mmr is now <%= new_mmr %>.
+  </p>
+<% end %>
+<br>
+
+<p><%= @losing_name %>'s mmr is now <%= @losing_mmr %>.</p>
+
+<br>
+
+<% @losing_players.each do |player| %>
+  <% player_name = player[:name] %>
+  <% new_mmr = player[:mmr] %>
+  <p>
+    <%= player_name %> <b>lost</b> <%= @mmr_gain %> mmr!
+    Their mmr is now <%= new_mmr %>.
+  </p>
+<% end %>
+
+
+<br>
+
+<a href="/play">new game</a>
+
+<br><br>
+
+<a href="/home">home</a>

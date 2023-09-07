@@ -1,0 +1,77 @@
+<h1>Players</h1>
+
+<a href="../new_player">new player</a>
+<br><br>
+<% if @players.size == 0 %>
+<form action="/players/seed" method="post">
+  <button type="submit">seed basic data</button>
+</form>
+<% end %>
+
+<br><br>
+
+
+
+<br><br>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>height (cm)</th>
+    <th>position</th>
+    <th>attribute</th>
+    <th>role</th>
+    <th>mmr</th>
+    <th>team</th>
+  </tr>
+
+<% if @db.players.empty?%>
+<tr>
+<td colspan="4">***no player data to show***</td>
+</tr>
+
+<% else %>
+
+<% @players_sorted.each_with_index do |player, idx| %>
+  <% next unless idx/5 + 1 == @page_number %>
+  <tr>
+    <td><%= player[:id] %></td>
+    <td><%= player[:name] %></td>
+    <td><%= player[:height] %></td>
+    <td><%= player[:position] %></td>
+    <td><%= player[:attribute] %></td>
+    <td><%= player[:role] %></td>
+    <td><%= player[:mmr] %></td>
+    <td><%= player_team(player)%></td>
+    <td><a href="/players/edit/<%= player[:id] %>">edit</td>
+    <td>
+      <form action="/players/delete/<%= player[:id] %>" method="post">
+        <button type="submit">delete</button>
+      </form>
+    </td>
+  </tr>
+<% end %>
+
+<% end %>
+
+</table>
+<br>
+
+<% if @players.size > 5 %>
+<p>page</p>
+<% number_of_pages(@players.size).times do |i| %>
+  <a href="/players?page=<%== i + 1 %>"><%== i + 1 %></a>
+<% end %>
+
+<% end %>
+
+<br><br>
+
+<a href="/home">home</a>
+
+
+<br><br><br><br><br>
+
+<a href="players/delete_all">delete all</a>
+

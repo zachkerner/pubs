@@ -1,0 +1,29 @@
+<h1>New Team</h1>
+
+<p><b>note: </b>Teams may register with 1, 2 or 3 players but require 3 players to play.</p>
+
+<form action="/new_team" method="post">
+  <label for="name">team name</label>
+  <input type="text" name="name" placeholder="" value="<%= return_valid_name(@team[:team_name]) %>"><br>
+
+  <label for="player 1">player 1 name</label>
+  <input type="text" name="player1" placeholder="" value="<%= return_valid_player(@team[:player1]) %>"><br>
+
+  <label for="player2">player 2 name</label>
+  <input type="text" name="player2" placeholder="" value="<%= return_valid_player(@team[:player2]) %>"><br>
+
+  <label for="player3"> player 3 name</label>
+  <input type="text" name="player3" placeholder="" value="<%= return_valid_player(@team[:player3]) %>"><br>
+
+  <br><br>
+  <input type="submit" value="submit">
+
+</form>
+
+<br>
+
+<a href="/players" target="_blank">list of players</a>
+
+<br><br>
+
+<a href="/teams">return</a>

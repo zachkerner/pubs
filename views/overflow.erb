@@ -1,0 +1,53 @@
+
+<br>
+
+<form action="/players/edit/<%= params[:id] %>" method="post">
+  <label for="name">name or nickname</label>
+  <input type="text" name="name" placeholder="<%= @player_name %>" value="">
+  <br><br>
+  <label for="height">height (cm)</label>
+  <input type="text" name="height" placeholder="<%= @player_height %>" value="">
+
+  <p>position:</p>
+  <input type="radio" name="position" value="guard" <%= "checked" if @player_position == "guard" %>>
+  <label for="guard">guard</label><br>
+  <input type="radio" name="position" value="wing" <%= "checked" if @player_position == "wing" %>>
+  <label for="wing">wing</label><br>
+  <input type="radio" name="position" value="big" <%= "checked" if @player_position == "big" %>>
+  <label for="big">big</label><br>
+
+  <p>attribute:</p>
+  <input type="radio" name="attribute" value="strength" <%= "checked" if @player_attribute == "strength" %>>
+  <label for="strength">strength - players who win with power</label><br>
+  <input type="radio" name="attribute" value="agility" <%= "checked" if @player_attribute == "agility" %>>
+  <label for="agility">agility - players who win with speed</label><br>
+  <input type="radio" name="attribute" value="intellect" <%= "checked" if @player_attribute == "intellect" %>>
+  <label for="intellect">intellect - players who win with smarts</label>
+
+  <p>role:</p>
+  <input type="radio" name="role" value="carry" <%= "checked" if @player_role == "carry" %>>
+  <label for="carry">carry - players who help their team win by scoring</label><br>
+  <input type="radio" name="role" value="support"  <%= "checked" if @player_role == "support" %>>
+  <label for="support">support - players who help their team win by rebounding, defense and teamwork</label>
+
+  <p>mmr:</p>
+  <input type="radio" name="mmr" value="600"  <%= "checked" if @player_mmr == "600" %>>
+  <label for="little tykes">600 - little tykes</label><br>
+  <input type="radio" name="mmr" value="800" <%= "checked" if @player_mmr == "800" %>>
+  <label for="ymca">800 - ymca</label><br>
+  <input type="radio" name="mmr" value="1000" <%= "checked" if @player_mmr == "1000" %>>
+  <label for="LA fitness">1000 - LA fitness</label><br>
+  <input type="radio" name="mmr" value="1200" <%= "checked" if @player_mmr == "1200" %>>
+  <label for="D3">1200 - D3</label><br>
+  <input type="radio" name="mmr" value="1400" <%= "checked" if @player_mmr == "1400" %>>
+  <label for="prospect"> 1400 - prospect</label>
+
+  <br><br>  
+  <input type="submit" value="submit">
+</form>
+
+<br>
+
+<a href="/home">return</a>
+
+

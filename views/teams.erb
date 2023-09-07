@@ -1,0 +1,66 @@
+<h1>Teams</h1>
+
+<br>
+
+<a href="/new_team">new team</a>
+
+<br><br>
+
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>team name</th>
+    <th>number of players</th>
+    <th>average mmr</th>
+  </tr>
+
+
+  <% if @teams.empty? %>
+
+    <tr>
+      <td colspan="4">*** no team data to show ***</td>
+    </tr>
+
+  <% else %>
+    <% @teams_ordered.each_with_index do |team, idx| %>
+      <% next unless idx/5 + 1 == @page_number %>
+    <tr>
+      <td><%= team[:id] %></td>
+      <td><%= team[:name] %></td>
+      <td><%= team[:roster_size] %></td>
+      <td><%= team[:team_mmr] %></td>
+      <td><a href="/teams/edit/<%= team[:id] %>">edit</a></td>
+      <td>
+        <form action="/teams/delete/<%= team[:id] %>" method="post">
+          <button type="submit">delete</button>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+
+  <% end %>
+
+
+
+</table>
+
+<br><br>
+<p>* Delete team also deletes all players on that team. </p>
+
+<br><br>
+
+<% if @teams.size > 5 %>
+<p>page</p>
+<% number_of_pages(@teams.size).times do |i| %>
+  <a href="/teams?page=<%= i + 1 %>"><%= i + 1 %></a>
+<% end %>
+
+<% end %>
+<br><br>
+
+
+<a href="/home">home</a><br><br>
+
+
+<a href="/teams/delete_all">delete all</a>

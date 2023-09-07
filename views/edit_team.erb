@@ -1,0 +1,78 @@
+<h1><%= @team_name %> <small>(edit page)</small><h2>
+
+
+<h3>Current Roster: </h3>
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>height</th>
+    <th>position</th>
+    <th>attribute</th>
+    <th>role</th>
+    <th>mmr</th>
+  </tr>
+  
+<% @roster_sorted.each_with_index do |player,idx| %>
+  
+  <tr>
+    <td><%= player[:id] %></td>
+    <td><%= player[:name] %></td>
+    <td><%= player[:height] %></td>
+    <td><%= player[:position] %></td>
+    <td><%= player[:attribute] %></td>
+    <td><%= player[:role] %></td>
+    <td><%= player[:mmr] %></td>
+    <td>
+      <form action="/teams/edit/<%= params[:id] %>/remove_player/<%= player[:id] %>" method="post">
+        <button type="submit">remove</button>
+      </form>
+    </td>
+    <td>
+      <a href="/players/edit/<%= player[:id] %>">edit player</a>
+    </td>
+    <td>
+      <form action="/players/delete_from_team/<%= player[:team_id] %>/<%= player[:id] %>" method="post">
+        <button type="submit">delete player</button>
+      </form>
+  </tr>
+<% end %>
+<tr>
+<td colspan="4"><%= no_data(@roster) %></td>
+<tr>
+
+</table>
+
+
+<br><br>
+
+<% if @roster.size < 3 %>
+<form action="/teams/edit/<%= params[:id] %>/add_player" method="post">
+  <label for="add_player">add player: </label>
+  <input type="text" name="add_player" value="" placeholder="">
+  <input type="submit" value="submit">
+</form>
+<br>
+
+<% else %>
+
+<p>Roster full!</p>
+
+<br>
+
+<% end %>
+
+
+<form action="/teams/edit/<%= params[:id] %>/new_name" method="post"
+  <label for="new_name">new name: </label>
+  <input type="text" name="new_name" value="" placeholder="">
+  <input type="submit" value="submit">
+</form>
+
+<br>
+
+<a href="/players" target="_blank">list of players</a>
+
+<br><br>
+
+<a href="/teams">back to teams</a>

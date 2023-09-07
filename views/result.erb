@@ -1,0 +1,45 @@
+<h1>The Stakes</h1>
+
+
+<h2><%= @team1_name %> (<%= @team1_mmr %>)  </h2>
+
+<% @team1_roster.each do |player| %>
+
+  <%= player[:name] %>(<%= player[:mmr] %>) ---
+
+<% end %>
+
+<h2> vs </h2> 
+
+<h2><%= @team2_name %> (<%= @team2_mmr %>) </h2>
+
+<% @team2_roster.each do |player| %>
+
+  <%= player[:name] %>(<%= player[:mmr] %>) ---
+
+<% end %>
+
+
+<h3>With a win, each player on <%= @team1_name %> gains <%= @mmr_gain_favorite %> mmr and each player on 
+<%= @team2_name %> loses <%= @mmr_gain_favorite %> mmr.</h3>
+
+<h3>With a win, each player on <%= @team2_name %> gains <%= @mmr_gain_underdog %> mmr and each player on 
+<%= @team1_name %> loses <%= @mmr_gain_underdog %> mmr.</h3>
+
+
+<h3>Select winner: </h3>
+<form action="/result" method="post">
+  <input type="radio" name="winner" value="<%= @team1_name%>">
+  <label for="<%= @team1_name %>"><%= @team1_name %></label><br>
+  <input type="radio" name="winner" value="<%= @team2_name%>">
+  <label for="<%= @team2_name %>"><%= @team2_name %></label><br><br>
+  <input type="submit" value="submit">
+</form>
+
+<br><br>
+
+<a href="/home">abort (no results recorded)</a>
+
+<br><br>
+
+<a href="/play">return</a>

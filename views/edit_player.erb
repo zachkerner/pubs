@@ -1,0 +1,54 @@
+<h2>Edit Player</h2>
+
+
+
+<br>
+
+<form action="/players/edit/<%= params[:id] %>" method="post">
+  <label for="name">name or nickname</label>
+  <input type="text" name="name" placeholder="" value="<%= @player_name %>">
+  <br><br>
+  <label for="height">height (cm)</label>
+  <input type="text" name="height" placeholder="" value="<%= @player_height %>">
+
+  <p>position:</p>
+  <input type="radio" name="position" value="guard" <%== "checked" if @player_position == "guard" %>>
+  <label for="guard">guard</label><br>
+  <input type="radio" name="position" value="wing" <%== "checked" if @player_position == "wing" %>>
+  <label for="wing">wing</label><br>
+  <input type="radio" name="position" value="big" <%== "checked" if @player_position == "big" %>>
+  <label for="big">big</label><br>
+
+  <p>attribute:</p>
+  <input type="radio" name="attribute" value="strength" <%=="checked" if @player_attribute == "strength" %>>
+  <label for="strength">strength - players who win with power</label><br>
+  <input type="radio" name="attribute" value="agility" <%== "checked" if @player_attribute == "agility" %>>
+  <label for="agility">agility - players who win with speed</label><br>
+  <input type="radio" name="attribute" value="intelligence" <%== "checked" if @player_attribute == "intelligence" %>>
+  <label for="intellect">intelligence - players who win with smarts</label>
+
+  <p>role:</p>
+  <input type="radio" name="role" value="carry" <%== "checked" if @player_role == "carry" %>>
+  <label for="carry">carry - players who help their team win by scoring</label><br>
+  <input type="radio" name="role" value="support"  <%== "checked" if @player_role == "support" %>>
+  <label for="support">support - players who help their team win by rebounding, defense and teamwork</label>
+
+
+  <br><br>  
+  <input type="submit" value="submit">
+</form>
+
+<br>
+
+<a href="/players?page=1">players</a>
+<br>
+
+<% if @player_team_id %>
+
+<a href="/teams/edit/<%= @player_team_id %>">back to team</a>
+
+<% end %>
+
+
+
+
